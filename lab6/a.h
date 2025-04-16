@@ -1,0 +1,24 @@
+#pragma once
+
+class Console;
+class ServiceMasina;
+class Repository;
+class MasinaException;
+class RepositoryException;
+class MasinaDoesNotExistException;
+class MasinaAlreadyExistsException;
+class ValidationException;
+class Validator;
+void test_iterator();
+void teste_vector();
+void test_erase();
+void test_push_back();
+void test_vector();
+void test_set();
+void teste_repo();
+void test_find();
+void test_delete();
+void test_update();
+void test_store();
+void run_tests();
+void main2();

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Repository">
+      <UniqueIdentifier>{f6b9265d-b39f-4ecc-b7d5-9c4b88ce15e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain">
+      <UniqueIdentifier>{8f8783bb-bacb-43e3-b399-9eaa8d5e273e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{3d73d5e8-fa63-45c1-ab0a-29db2dd67c6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{66877bbc-5280-49aa-b460-0d56772616b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Teste">
+      <UniqueIdentifier>{c6f9ed94-b84d-42dc-be30-bb6b52356caf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{d7d78e20-944a-42cf-9a91-0d78432dc685}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Masina.cpp">
+      <Filter>Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="teste_domain.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+    <ClCompile Include="Repository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceMasina.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="run_tests.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+    <ClCompile Include="teste_repo.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+    <ClCompile Include="teste_service.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+    <ClCompile Include="Validator.cpp">
+      <Filter>Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="teste_vector.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Masina.h">
+      <Filter>Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="teste_domain.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="Repository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceMasina.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="run_tests.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="teste_repo.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="teste_service.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="Validator.h">
+      <Filter>Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVector.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="IteratorVector.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="teste_vector.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="a.h" />
+  </ItemGroup>
+</Project>
