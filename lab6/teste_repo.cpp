@@ -115,7 +115,7 @@ void test_set()
 {
 	Repository repo;
 
-	MyVector<Masina> v;
+	std::vector<Masina> v;
 	v.push_back(Masina{ "BN11ABC", "abc", "abc", "abc" });
 	v.push_back(Masina{ "CJ11ADC", "abc", "abc", "abc" });
 	v.push_back(Masina{ "BV99XYZ", "abc", "abc", "abc" });

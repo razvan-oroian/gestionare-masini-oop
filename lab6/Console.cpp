@@ -3,7 +3,7 @@
 /* Creeaza un obiect de tip consola
 *  return:-
 */
-Console::Console() noexcept
+Console::Console() noexcept : wlist(srvMasina)
 {}
 
 /* Executa aplicatia
@@ -61,7 +61,20 @@ void Console::Run()
 				is_running = false;
 				break;
 			case 'P':
-				AfiseazaMasini();
+				AfiseazaMasini(srvMasina.GetAll());
+				break;
+			case 'A':
+				AdaugaMasinaSpalatUi();
+				break;
+			case 'W':
+				AfiseazaMasini(wlist.GetAll());
+				break;
+			case 'G':
+				wlist.GolesteLista();
+				std::cout << "Numar masini: " << wlist.GetSize() << '\n';
+				break;
+			case 'R':
+				GenereazaMasiniSpalatUi();
 				break;
 			default:
 				std::cout << "Optiune invalida\n";
@@ -121,9 +134,9 @@ void Console::CitesteDate(string& nrInmatriculare, string& producator, string& m
 /* Afiseaza colectia de masini
 *  return:-
 */
-void Console::AfiseazaMasini() const
+void Console::AfiseazaMasini(const std::vector<Masina>& all) const
 {
-	for (const Masina& masina : srvMasina.GetAll())
+	for (const Masina& masina : all)
 		std::cout << masina;
 }
 
@@ -163,6 +176,12 @@ void Console::ModificaMasinaUi()
 	{
 		srvMasina.ModificaMasina(nrInmatriculare, producator, model, tip);
 	}
+	catch (const ValidationException& e)
+	{
+		std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+		std::cout << e.GetMsg();
+		std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	}
 	catch (const RepositoryException& e)
 	{
 		std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -194,7 +213,7 @@ void Console::FiltrareDupaProducatorUi() const
 	std::cout << "Introduceti producatorul:";
 	std::getline(std::cin, producator);
 
-	MyVector<Masina> filtrate;
+	std::vector<Masina> filtrate;
 	srvMasina.FiltrareDupaProducator(filtrate, producator);
 
 	for (const Masina& masina : filtrate)
@@ -211,7 +230,7 @@ void Console::FiltrareDupaTipUi() const
 	std::cout << "Introduceti tipul:";
 	std::getline(std::cin, tip);
 
-	MyVector<Masina> filtrate;
+	std::vector<Masina> filtrate;
 	srvMasina.FiltrareDupaTip(filtrate, tip);
 
 	for (const Masina& masina : filtrate)
@@ -250,6 +269,39 @@ void Console::SortDupaProducatorModel()
 		});
 }
 
+/* Citeste un nr de inmatriculare si adauga in lista de spalare
+*/
+void Console::AdaugaMasinaSpalatUi()
+{
+	string nrInmat;
+	std::cin.get();
+	std::cout << "Introduceti nr de inmatriculare:";
+	std::getline(std::cin, nrInmat);
+
+	try {
+		wlist.AdaugaMasina(nrInmat);
+		std::cout << "Numar masini: " << wlist.GetSize() << '\n';
+	}
+	catch (const RepositoryException& e)
+	{
+		std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+		std::cout << e.GetMsg();
+		std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	}
+}
+
+/* Citeste un numar si genereaza masinile in lista de spalare
+*/
+void Console::GenereazaMasiniSpalatUi()
+{
+	int count;
+	std::cout << "Introduceti un numar:";
+	std::cin >> count;
+
+	wlist.GenereazaLista(count);
+	std::cout << "Numar masini: " << wlist.GetSize() << '\n';
+}
+
 /* Afiseaza meniul aplicatiei
 *  return:-
 */
@@ -265,6 +317,10 @@ void Console::AfiseazaMeniu() const
 		<< "7. Sorteaza dupa numarul de inmatriculare\n"
 		<< "8. Sorteaza dupa tip\n"
 		<< "9. Sorteaza dupa producator si model\n"
+		<< "A. Adauga la lista de masini care urmeaza sa fie spalate\n"
+		<< "W. Afiseaza masini care urmeaza sa fie spalate\n"
+		<< "G. Goleste lista de masini care urmeaza sa fie spalate\n"
+		<< "R. Genereaza masini care urmeaza sa fie spalate\n"
 		<< "X. Iesire aplicatie\n"
 		<< "P. Afiseaza masini\n";
 	std::cout << "**********************************\n";

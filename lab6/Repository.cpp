@@ -26,9 +26,13 @@ void Repository::Store(const Masina & masina)
 */
 const int Repository::Find(const string& nrInmatriculare) const
 {
-	for (int i = 0; i < masini.Size(); ++i)
+	int i = 0;
+	for (auto masina : masini)
+	{
 		if (masini.at(i).GetNrInmatriculare() == nrInmatriculare)
 			return i;
+		++i;
+	}
 
 	return -1;
 }
@@ -36,7 +40,7 @@ const int Repository::Find(const string& nrInmatriculare) const
 /* Returneaza colectia de masini
 *  return: vector de masini
 */
-const MyVector<Masina>& Repository::GetAll() const noexcept
+const std::vector<Masina>& Repository::GetAll() const noexcept
 {
 	return masini;
 }
@@ -45,7 +49,7 @@ const MyVector<Masina>& Repository::GetAll() const noexcept
 *  masini_noi: vector de masini
 *  return:-
 */
-void Repository::SetMasini(const MyVector<Masina>& masini_noi)
+void Repository::SetMasini(const std::vector<Masina>& masini_noi)
 {
 	masini = masini_noi;
 }
@@ -55,7 +59,7 @@ void Repository::SetMasini(const MyVector<Masina>& masini_noi)
 */
 const size_t Repository::GetSize() const noexcept
 {
-	return masini.Size();
+	return masini.size();
 }
 
 /* Sterge din colectie masina care are un numar de inmatriculare dat

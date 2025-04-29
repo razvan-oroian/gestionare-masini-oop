@@ -1,5 +1,5 @@
 #include "ServiceMasina.h"
-
+#include "WashingList.h"
 /* Creeaza un obiect de tip serviciu pentru masini
 *  return:-
 */
@@ -24,7 +24,7 @@ void ServiceMasina::AdaugaMasina(const string& nrInmatriculare, const string& pr
 /* Returneaza colectia de masini
 *  return: vector de masini
 */
-const MyVector<Masina>& ServiceMasina::GetAll() const noexcept
+const std::vector<Masina>& ServiceMasina::GetAll() const noexcept
 {
 	return repoMasini.GetAll();
 }
@@ -77,12 +77,14 @@ const Masina ServiceMasina::CautaMasina(const string& nrInmatriculare) const
 *  producator: producatorul dat
 *  return:-
 */
-void ServiceMasina::FiltrareDupaProducator(MyVector<Masina>& filtrate, const string& producator) const
+void ServiceMasina::FiltrareDupaProducator(std::vector<Masina>& filtrate, const string& producator) const
 
 {
-	for (const Masina& masina : repoMasini.GetAll())
+	auto& masini = GetAll();
+	std::copy_if(masini.begin(), masini.end(), std::back_inserter(filtrate), [&producator](const Masina& m) {return m.GetProducator() == producator; });
+	/*for (const Masina& masina : repoMasini.GetAll())
 		if (masina.GetProducator() == producator)
-			filtrate.push_back(masina);
+			filtrate.push_back(masina);*/
 }
 
 /* Selecteaza din colectia de masini pe acelea care au un tip dat
@@ -90,11 +92,14 @@ void ServiceMasina::FiltrareDupaProducator(MyVector<Masina>& filtrate, const str
 *  tip: tipul dat
 *  return:-
 */
-void ServiceMasina::FiltrareDupaTip(MyVector<Masina>& filtrate, const string& tip) const
+void ServiceMasina::FiltrareDupaTip(std::vector<Masina>& filtrate, const string& tip) const
 {
-	for (const Masina& masina : repoMasini.GetAll())
+	auto& masini = GetAll();
+	auto it = std::copy_if(masini.begin(), masini.end(), std::back_inserter(filtrate), [&tip](const Masina& m) {return m.GetTip() == tip; });
+
+	/*for (const Masina& masina : repoMasini.GetAll())
 		if (masina.GetTip() == tip)
-			filtrate.push_back(masina);
+			filtrate.push_back(masina);*/
 }
 
 /* Adauga masini in colectie
@@ -123,16 +128,19 @@ void ServiceMasina::Sort(cmpFct cmp)
 	if (cmp == nullptr)
 		return;
 
-	MyVector<Masina> all = GetAll();
-	for (int i = 0; i < all.Size() - 1; ++i)
-		for (int j = i + 1; j < all.Size(); ++j)
+	auto all = GetAll();
+	sort(all.begin(), all.end(), cmp);
+	repoMasini.SetMasini(all);
+
+
+	/*for (int i = 0; i < all.size() - 1; ++i)
+		for (int j = i + 1; j < all.size(); ++j)
 			if (cmp(all.at(j), all.at(i)))
 			{
 
 				Masina aux = all.at(j);
 				all.at(j) = all.at(i);
 				all.at(i) = aux;
-			}
+			}*/
 
-	repoMasini.SetMasini(all);
 }

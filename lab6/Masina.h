@@ -26,6 +26,7 @@ public:
 	void SetModel(const string& model) noexcept;
 	void SetTip(const string& tip) noexcept;
 
+	void swap(Masina& other);
 	Masina& operator=(const Masina& other);
 
 };

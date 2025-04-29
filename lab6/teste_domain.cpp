@@ -130,5 +130,23 @@ void teste_domain()
 	test_masina();
 	test_validare();
 	test_output_stream();
+	test_swap();
+}
+
+void test_swap()
+{
+	Masina m1{ "BN11ABC", "BMW", "Seria 7", "SUV" };
+	Masina m2{ "CJ12XYZ", "Audi", "A6", "Sport" };
+
+	m1.swap(m2);
+	assert(m1.GetNrInmatriculare() == "CJ12XYZ");
+	assert(m1.GetProducator() == "Audi");
+	assert(m1.GetModel() == "A6");
+	assert(m1.GetTip() == "Sport");
+
+	assert(m2.GetNrInmatriculare() == "BN11ABC");
+	assert(m2.GetProducator() == "BMW");
+	assert(m2.GetModel() == "Seria 7");
+	assert(m2.GetTip() == "SUV");
 }
 

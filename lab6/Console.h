@@ -3,12 +3,14 @@
 
 #include "a.h"
 #include "ServiceMasina.h"
+#include "WashingList.h"
 #include "run_tests.h"
 #include <cctype>
 
 class Console {
 private:
 	ServiceMasina srvMasina;
+	WashingList wlist;
 
 public:
 	Console() noexcept;
@@ -16,7 +18,7 @@ public:
 	void Run();
 	void AdaugaMasinaUi();
 	void CitesteDate(string& nrInmatriculare, string& producator, string& model, string& tip) const;
-	void AfiseazaMasini() const;
+	void AfiseazaMasini(const std::vector<Masina>& all) const;
 	void StergeMasinaUi();
 	void ModificaMasinaUi();
 	void CautaMasinaUi() const;
@@ -25,6 +27,8 @@ public:
 	void SortDupaNrInmatriculare();
 	void SortDupaTip();
 	void SortDupaProducatorModel();
+	void AdaugaMasinaSpalatUi();
+	void GenereazaMasiniSpalatUi();
 	~Console() = default;
 };
 

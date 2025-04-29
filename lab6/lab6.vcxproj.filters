@@ -56,6 +56,12 @@
     <ClCompile Include="teste_vector.cpp">
       <Filter>Teste</Filter>
     </ClCompile>
+    <ClCompile Include="WashingList.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="test_washing_list.cpp">
+      <Filter>Teste</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Masina.h">
@@ -85,15 +91,21 @@
     <ClInclude Include="Validator.h">
       <Filter>Domain</Filter>
     </ClInclude>
-    <ClInclude Include="MyVector.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="IteratorVector.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="teste_vector.h">
       <Filter>Teste</Filter>
     </ClInclude>
     <ClInclude Include="a.h" />
+    <ClInclude Include="IteratorVector.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVector.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="WashingList.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="test_washing_list.h">
+      <Filter>Teste</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

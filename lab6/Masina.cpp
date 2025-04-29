@@ -109,6 +109,13 @@ void Masina::SetTip(const string& type) noexcept
 	this->tip = type;
 }
 
+void Masina::swap(Masina& other)
+{
+	Masina aux = other;
+	other = *this;
+	*this = aux;
+}
+
 Masina& Masina::operator=(const Masina& other)
 {
 	if (this != &other)

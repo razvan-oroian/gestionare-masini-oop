@@ -10,6 +10,7 @@ void test_masina();
 void test_validare();
 void test_output_stream();
 void teste_domain();
+void test_swap();
 
 
 #endif

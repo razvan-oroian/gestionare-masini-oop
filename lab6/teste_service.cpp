@@ -185,9 +185,9 @@ void testFiltrareDupaProducator()
 	srv.AdaugaMasina("BV65STU", "Audi", "A4", "Sedan");
 	assert(srv.GetSize() == 5);
 
-	MyVector<Masina> filtrate;
+	std::vector<Masina> filtrate;
 	srv.FiltrareDupaProducator(filtrate, "Dacia");
-	assert(filtrate.Size() == 2);
+	assert(filtrate.size() == 2);
 	assert(filtrate.at(0).GetNrInmatriculare() == "B123ABC");
 	assert(filtrate.at(1).GetNrInmatriculare() == "GL98VWX");
 }
@@ -203,9 +203,9 @@ void testFiltrareDupaTip()
 	srv.AdaugaMasina("BV65STU", "Audi", "A4", "Sedan");
 	assert(srv.GetSize() == 5);
 
-	MyVector<Masina> filtrate;
+	std::vector<Masina> filtrate;
 	srv.FiltrareDupaTip(filtrate, "SUV");
-	assert(filtrate.Size() == 2);
+	assert(filtrate.size() == 2);
 	assert(filtrate.at(0).GetNrInmatriculare() == "B123ABC");
 	assert(filtrate.at(1).GetNrInmatriculare() == "IF78MNO");
 }
@@ -232,7 +232,7 @@ void testSort()
 		});
 
 
-	const MyVector<Masina>& all = srv.GetAll();
+	const std::vector<Masina>& all = srv.GetAll();
 	assert(all.at(0).GetNrInmatriculare() == "AG32PQR");
 	assert(all.at(1).GetNrInmatriculare() == "B123ABC");
 	assert(all.at(2).GetNrInmatriculare() == "BV65STU");

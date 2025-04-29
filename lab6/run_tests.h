@@ -5,6 +5,7 @@
 #include "teste_repo.h"
 #include "teste_service.h"
 #include "teste_vector.h"
+#include "test_washing_list.h"
 
 void run_tests();
 
