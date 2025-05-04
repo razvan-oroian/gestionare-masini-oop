@@ -76,6 +76,9 @@ void Console::Run()
 			case 'R':
 				GenereazaMasiniSpalatUi();
 				break;
+			case 'S':
+				WriteToFileUi();
+				break;
 			default:
 				std::cout << "Optiune invalida\n";
 				break;
@@ -302,6 +305,15 @@ void Console::GenereazaMasiniSpalatUi()
 	std::cout << "Numar masini: " << wlist.GetSize() << '\n';
 }
 
+void Console::WriteToFileUi()
+{
+	string filename;
+	std::cout << "Introduceti numele fisierului: ";
+	std::cin >> filename;
+
+	wlist.WriteToFile(filename);
+}
+
 /* Afiseaza meniul aplicatiei
 *  return:-
 */
@@ -321,6 +333,7 @@ void Console::AfiseazaMeniu() const
 		<< "W. Afiseaza masini care urmeaza sa fie spalate\n"
 		<< "G. Goleste lista de masini care urmeaza sa fie spalate\n"
 		<< "R. Genereaza masini care urmeaza sa fie spalate\n"
+		<< "S. Salveaza masinile care urmeaza sa fie spalate intr-un fisier\n"
 		<< "X. Iesire aplicatie\n"
 		<< "P. Afiseaza masini\n";
 	std::cout << "**********************************\n";

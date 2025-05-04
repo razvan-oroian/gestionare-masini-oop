@@ -16,6 +16,7 @@ public:
 	void GenereazaLista(int count);
 	const std::vector<Masina>& GetAll() const noexcept;
 	const int GetSize() const noexcept;
+	void WriteToFile(const string& filename) const;
 };
 
 

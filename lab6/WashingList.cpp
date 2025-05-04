@@ -68,3 +68,21 @@ const int WashingList::GetSize() const noexcept
 {
 	return masini.size();
 }
+
+void WashingList::WriteToFile(const string& filename) const
+{
+	string csv_file = filename + ".csv";
+	std::ofstream fout(csv_file);
+
+	auto& all = GetAll();
+	string masina_str;
+
+	for (auto& masina : all)
+	{
+		masina_str = masina.GetNrInmatriculare() + ',' + masina.GetProducator() +
+			',' + masina.GetModel() + ',' + masina.GetTip() + '\n';
+		fout << masina_str;
+	}
+
+	fout.close();
+}

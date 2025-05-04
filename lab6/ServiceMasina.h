@@ -6,6 +6,7 @@
 #include "Validator.h"
 #include "assert.h"
 #include <algorithm>
+#include <fstream>
 
 typedef bool(*cmpFct)(const Masina&, const Masina&);
 
@@ -13,7 +14,6 @@ class ServiceMasina {
 private:
 	Repository repoMasini;
 	Validator validator;
-
 public:
 	ServiceMasina() noexcept;
 	void AdaugaMasina(const string& nrInmatriculare, const string& producator, const string& model, const string& tip);

@@ -29,6 +29,7 @@ public:
 	void SortDupaProducatorModel();
 	void AdaugaMasinaSpalatUi();
 	void GenereazaMasiniSpalatUi();
+	void WriteToFileUi();
 	~Console() = default;
 };
 
