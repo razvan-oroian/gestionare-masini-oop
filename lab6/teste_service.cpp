@@ -273,6 +273,65 @@ void testSort()
 
 }
 
+void testUndo()
+{
+	ServiceMasina srv;
+	assert(srv.GetSize() == 0);
+
+	srv.AdaugaMasina("BN11PMO", "a", "a", "a");
+	srv.AdaugaMasina("CJ19YML", "b", "b", "b");
+	srv.ModificaMasina("BN11PMO", "d", "d", "d");
+	srv.StergeMasina("BN11PMO");
+	srv.ModificaMasina("CJ19YML", "e", "e", "e");
+	srv.StergeMasina("CJ19YML");
+
+	assert(srv.GetSize() == 0);
+
+	srv.Undo();
+	assert(srv.GetSize() == 1);
+	auto& m1 = srv.CautaMasina("CJ19YML");
+	assert(m1.GetProducator() == "e");
+	assert(m1.GetModel() == "e");
+	assert(m1.GetTip() == "e");
+
+	srv.Undo();
+	auto& m2 = srv.CautaMasina("CJ19YML");
+	assert(m2.GetProducator() == "b");
+	assert(m2.GetModel() == "b");
+	assert(m2.GetTip() == "b");
+
+	srv.Undo();
+	assert(srv.GetSize() == 2);
+	auto& m3 = srv.CautaMasina("BN11PMO");
+	assert(m3.GetProducator() == "d");
+	assert(m3.GetModel() == "d");
+	assert(m3.GetTip() == "d");
+
+	srv.Undo();
+	auto& m4 = srv.CautaMasina("BN11PMO");
+	assert(m4.GetProducator() == "a");
+	assert(m4.GetModel() == "a");
+	assert(m4.GetTip() == "a");
+
+	srv.Undo();
+	auto& m5 = srv.CautaMasina("CJ19YML");
+	assert(m5.GetNrInmatriculare() == "");
+	assert(srv.GetSize() == 1);
+
+	srv.Undo();
+	auto& m6 = srv.CautaMasina("BN11PMO");
+	assert(m6.GetNrInmatriculare() == "");
+	assert(srv.GetSize() == 0);
+
+	try {
+		srv.Undo();
+		assert(false);
+	}
+	catch (const std::exception&){
+		assert(true);
+	}
+}
+
 void teste_service()
 {
 	testAdaugaMasina();
@@ -282,4 +341,5 @@ void teste_service()
 	testFiltrareDupaProducator();
 	testFiltrareDupaTip();
 	testSort();
+	testUndo();
 }

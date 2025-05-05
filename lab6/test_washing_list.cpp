@@ -71,9 +71,37 @@ void test_genereaza()
 	assert(wlist.GetSize() == srv.GetSize());
 }
 
+void test_export()
+{
+
+	ServiceMasina srv;
+	srv.AdaugaMasina("BN11ABC", "BMW", "X6", "Sport");
+	srv.AdaugaMasina("SV99XHZ", "Audi", "Seria 7", "SUV");
+	srv.AdaugaMasina("BV23LAS", "Mercedes", "C-Class", "SUV");
+
+	WashingList wlist{ srv };
+	wlist.AdaugaMasina("BN11ABC");
+	wlist.AdaugaMasina("BV23LAS");
+
+	wlist.WriteToFile("test");
+
+	std::ifstream fin("test.csv");
+	string str1, str2, line;
+	str1 = "BN11ABC,BMW,X6,Sport";
+	str2 = "BV23LAS,Mercedes,C-Class,SUV";
+
+	std::getline(fin, line);
+	assert(line == str1);
+	std::getline(fin, line);
+	assert(line == str2);
+
+	fin.close();
+}
+
 void test_washing_list()
 {
 	test_adauga();
 	test_goleste();
 	test_genereaza();
+	test_export();
 }

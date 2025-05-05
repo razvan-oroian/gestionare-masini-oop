@@ -13,10 +13,6 @@ void main2()
 
 int main()
 {
-	std::ofstream fout("abc.csv");
-	fout << "Ana,are,mere";
-
-	fout.close();
 	main2();
 	_CrtDumpMemoryLeaks();
 	return 0;

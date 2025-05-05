@@ -7,6 +7,7 @@
 #include "assert.h"
 #include <algorithm>
 #include <fstream>
+#include "ActiuneUndo.h"
 
 typedef bool(*cmpFct)(const Masina&, const Masina&);
 
@@ -14,6 +15,7 @@ class ServiceMasina {
 private:
 	Repository repoMasini;
 	Validator validator;
+	std::vector<ActiuneUndo*> listaUndo;
 public:
 	ServiceMasina() noexcept;
 	void AdaugaMasina(const string& nrInmatriculare, const string& producator, const string& model, const string& tip);
@@ -26,6 +28,8 @@ public:
 	void FiltrareDupaTip(std::vector<Masina>& filtrate, const string& tip) const;
 	void AdaugaDefault();
 	void Sort(cmpFct cmp);
+	void Undo();
+	~ServiceMasina();
 };
 
 

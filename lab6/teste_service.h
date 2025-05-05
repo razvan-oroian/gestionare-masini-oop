@@ -10,6 +10,7 @@ void testCautaMasina();
 void testFiltrareDupaProducator();
 void testFiltrareDupaTip();
 void testSort();
+void testUndo();
 void teste_service();
 
 #endif

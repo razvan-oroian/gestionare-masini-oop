@@ -69,6 +69,10 @@ const int WashingList::GetSize() const noexcept
 	return masini.size();
 }
 
+/* Scrie intr-un fisier dat masinile din lista de spalare
+*  filename: numele fisierului
+*  exception: daca fisierul nu poate fi deschis
+*/
 void WashingList::WriteToFile(const string& filename) const
 {
 	string csv_file = filename + ".csv";

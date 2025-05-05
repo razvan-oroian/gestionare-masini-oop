@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActiuneUndo.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Masina.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="a.h" />
+    <ClInclude Include="ActiuneUndo.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="IteratorVector.h" />
     <ClInclude Include="Masina.h" />

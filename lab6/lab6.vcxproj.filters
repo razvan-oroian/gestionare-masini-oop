@@ -62,6 +62,9 @@
     <ClCompile Include="test_washing_list.cpp">
       <Filter>Teste</Filter>
     </ClCompile>
+    <ClCompile Include="ActiuneUndo.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Masina.h">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="test_washing_list.h">
       <Filter>Teste</Filter>
+    </ClInclude>
+    <ClInclude Include="ActiuneUndo.h">
+      <Filter>Service</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

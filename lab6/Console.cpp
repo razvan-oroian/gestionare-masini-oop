@@ -79,6 +79,9 @@ void Console::Run()
 			case 'S':
 				WriteToFileUi();
 				break;
+			case 'U':
+				UndoUi();
+				break;
 			default:
 				std::cout << "Optiune invalida\n";
 				break;
@@ -305,6 +308,8 @@ void Console::GenereazaMasiniSpalatUi()
 	std::cout << "Numar masini: " << wlist.GetSize() << '\n';
 }
 
+/* Citeste un nume de fisier si scrie in el masinile din lista de spalare 
+*/
 void Console::WriteToFileUi()
 {
 	string filename;
@@ -312,6 +317,21 @@ void Console::WriteToFileUi()
 	std::cin >> filename;
 
 	wlist.WriteToFile(filename);
+}
+
+/* Reface starea listei de masini dinaintea ultimei operatii
+*  Afiseaza mesaj de eroare daca nu se mai poate efectua undo
+*/
+void Console::UndoUi()
+{
+	try
+	{
+		srvMasina.Undo();
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what();
+	}
 }
 
 /* Afiseaza meniul aplicatiei
@@ -334,6 +354,7 @@ void Console::AfiseazaMeniu() const
 		<< "G. Goleste lista de masini care urmeaza sa fie spalate\n"
 		<< "R. Genereaza masini care urmeaza sa fie spalate\n"
 		<< "S. Salveaza masinile care urmeaza sa fie spalate intr-un fisier\n"
+		<< "U. Undo\n"
 		<< "X. Iesire aplicatie\n"
 		<< "P. Afiseaza masini\n";
 	std::cout << "**********************************\n";

@@ -30,6 +30,7 @@ public:
 	void AdaugaMasinaSpalatUi();
 	void GenereazaMasiniSpalatUi();
 	void WriteToFileUi();
+	void UndoUi();
 	~Console() = default;
 };
 

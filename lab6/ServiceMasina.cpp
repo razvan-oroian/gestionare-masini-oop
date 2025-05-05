@@ -19,6 +19,8 @@ void ServiceMasina::AdaugaMasina(const string& nrInmatriculare, const string& pr
 	validator.validateMasina(masina);
 
 	repoMasini.Store(masina);
+	UndoAdauga* ua = new UndoAdauga(repoMasini, nrInmatriculare);
+	listaUndo.push_back(ua);
 }
 
 /* Returneaza colectia de masini
@@ -42,7 +44,11 @@ const size_t ServiceMasina::GetSize() const noexcept
 */
 void ServiceMasina::StergeMasina(const string& nrInmatriculare)
 {
+	auto masina = CautaMasina(nrInmatriculare);
+
 	repoMasini.Delete(nrInmatriculare);
+	UndoSterge* us = new UndoSterge(repoMasini, masina);
+	listaUndo.push_back(us);
 }
 
 /* Modifica masina din colectie care are un numar de inmatriculare dat pe baza datelor primite
@@ -57,7 +63,12 @@ void ServiceMasina::ModificaMasina(const string& nrInmatriculare, const string& 
 	Masina masina{ nrInmatriculare, producator, model, tip };
 	validator.validateMasina(masina);
 
+	auto masina_veche = CautaMasina(nrInmatriculare);
+
 	repoMasini.Update(masina);
+
+	UndoModifica* um = new UndoModifica(repoMasini, masina_veche);
+	listaUndo.push_back(um);
 }
 
 /* Returneaza masina care are un numar de inmatriculare dat
@@ -143,4 +154,27 @@ void ServiceMasina::Sort(cmpFct cmp)
 				all.at(i) = aux;
 			}*/
 
+}
+
+/* Reface starea listei de masini dinaintea ultimei operatii
+*  exception: daca nu se mai poate efectua undo
+*/
+
+void ServiceMasina::Undo()
+{
+	if (listaUndo.empty())
+		throw std::exception("Nu se mai poate face undo!\n");
+
+	listaUndo.back()->doUndo();
+	delete listaUndo.back();
+	listaUndo.pop_back();
+}
+
+/* Distruge service-ul si dealoca memoria rezervata acestuia
+*/
+ServiceMasina::~ServiceMasina()
+{
+	if (!listaUndo.empty())
+		for (auto& act : listaUndo)
+			delete act;
 }
