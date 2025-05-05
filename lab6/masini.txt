@@ -1,0 +1,13 @@
+AG32PQR,Mercedes-Benz,C-Class,Sedan
+B123ABC,Dacia,Duster,SUV
+BN11ABC,BMW,X6,Sport
+BV23LAS,Mercedes,C-Class,SUV
+BV65STU,Audi,A4,Sedan
+CJ24YZA,Volkswagen,Passat,Sedan
+CJ71KAS,BMW,A7,Sport
+GL98VWX,Dacia,Logan,Sedan
+IF78MNO,BMW,X5,SUV
+IS13BCD,BMW,Series 3,Sedan
+PH86EFG,Mercedes,C Class,Sport
+SV99XHZ,Audi,Seria 7,SUV
+TM45XYZ,Volkswagen,Golf,Sport

@@ -9,11 +9,11 @@
 
 class Console {
 private:
-	ServiceMasina srvMasina;
+	ServiceMasina& srvMasina;
 	WashingList wlist;
 
 public:
-	Console() noexcept;
+	Console(ServiceMasina& srv) noexcept;
 	void AfiseazaMeniu() const;
 	void Run();
 	void AdaugaMasinaUi();

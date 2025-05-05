@@ -13,11 +13,11 @@ typedef bool(*cmpFct)(const Masina&, const Masina&);
 
 class ServiceMasina {
 private:
-	Repository repoMasini;
-	Validator validator;
+	RepositoryFile& repoMasini;
+	Validator& validator;
 	std::vector<ActiuneUndo*> listaUndo;
 public:
-	ServiceMasina() noexcept;
+	ServiceMasina(RepositoryFile& repo, Validator& validator);
 	void AdaugaMasina(const string& nrInmatriculare, const string& producator, const string& model, const string& tip);
 	const std::vector<Masina>& GetAll() const noexcept;
 	const size_t GetSize() const noexcept;

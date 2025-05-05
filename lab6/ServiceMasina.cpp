@@ -3,7 +3,7 @@
 /* Creeaza un obiect de tip serviciu pentru masini
 *  return:-
 */
-ServiceMasina::ServiceMasina() noexcept
+ServiceMasina::ServiceMasina(RepositoryFile& repo, Validator& validator) : repoMasini { repo }, validator { validator }
 {}
 
 /* Adauga o masina in colectia de masini pe baza datelor primite
@@ -142,7 +142,7 @@ void ServiceMasina::Sort(cmpFct cmp)
 	auto all = GetAll();
 	sort(all.begin(), all.end(), cmp);
 	repoMasini.SetMasini(all);
-
+	repoMasini.writeToFile();
 
 	/*for (int i = 0; i < all.size() - 1; ++i)
 		for (int j = i + 1; j < all.size(); ++j)
@@ -168,6 +168,7 @@ void ServiceMasina::Undo()
 	listaUndo.back()->doUndo();
 	delete listaUndo.back();
 	listaUndo.pop_back();
+	repoMasini.writeToFile();
 }
 
 /* Distruge service-ul si dealoca memoria rezervata acestuia

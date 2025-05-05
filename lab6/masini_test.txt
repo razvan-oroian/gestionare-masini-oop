@@ -1,0 +1,3 @@
+BN11ABC,BMW,X6,Sport
+SV99XHZ,Audi,Seria 7,SUV
+BV23LAS,Mercedes,C-Class,SUV

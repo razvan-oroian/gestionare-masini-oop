@@ -3,7 +3,7 @@
 /* Creeaza un obiect de tip consola
 *  return:-
 */
-Console::Console() noexcept : wlist(srvMasina)
+Console::Console(ServiceMasina& srv) noexcept : srvMasina { srv }, wlist(srv)
 {}
 
 /* Executa aplicatia
@@ -14,7 +14,7 @@ void Console::Run()
 	run_tests();
 	std::cout << "Testele au trecut cu succes!\n";
 
-	srvMasina.AdaugaDefault();
+	//srvMasina.AdaugaDefault();
 	bool is_running = true;
 	string optiune;
 

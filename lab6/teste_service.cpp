@@ -2,7 +2,11 @@
 
 void testAdaugaMasina()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	assert(srv.GetSize() == 0);
 
 	srv.AdaugaMasina("BN10PMO", "BMW", "Seria 7", "SUV");
@@ -65,7 +69,11 @@ void testAdaugaMasina()
 
 void testStergeMasina()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	assert(srv.GetSize() == 0);
 	srv.AdaugaMasina("BN10PMO", "BMW", "Seria 7", "SUV");
 	assert(srv.GetSize() == 1);
@@ -94,7 +102,11 @@ void testStergeMasina()
 
 void testModificaMasina()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	assert(srv.GetSize() == 0);
 	srv.AdaugaMasina("CJ11ABC", "BMW", "Seria 7", "SUV");
 	assert(srv.GetSize() == 1);
@@ -158,7 +170,11 @@ void testModificaMasina()
 
 void testCautaMasina()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	assert(srv.GetSize() == 0);
 	srv.AdaugaMasina("BN10PMO", "BMW", "Seria 7", "SUV");
 	assert(srv.GetSize() == 1);
@@ -176,7 +192,11 @@ void testCautaMasina()
 
 void testFiltrareDupaProducator()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	assert(srv.GetSize() == 0);
 	srv.AdaugaMasina("B123ABC", "Dacia", "Duster", "SUV");
 	srv.AdaugaMasina("TM45XYZ", "Volkswagen", "Golf", "Sport");
@@ -194,7 +214,11 @@ void testFiltrareDupaProducator()
 
 void testFiltrareDupaTip()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	assert(srv.GetSize() == 0);
 	srv.AdaugaMasina("B123ABC", "Dacia", "Duster", "SUV");
 	srv.AdaugaMasina("TM45XYZ", "Volkswagen", "Golf", "Sport");
@@ -212,7 +236,11 @@ void testFiltrareDupaTip()
 
 void testSort()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	assert(srv.GetSize() == 0);
 	srv.AdaugaMasina("B123ABC", "Dacia", "Duster", "SUV");
 	srv.AdaugaMasina("TM45XYZ", "Volkswagen", "Golf", "Sport");
@@ -275,7 +303,11 @@ void testSort()
 
 void testUndo()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	assert(srv.GetSize() == 0);
 
 	srv.AdaugaMasina("BN11PMO", "a", "a", "a");

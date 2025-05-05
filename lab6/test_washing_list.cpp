@@ -2,7 +2,11 @@
 
 void test_adauga()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	srv.AdaugaMasina("BN11ABC", "BMW", "X6", "Sport");
 	srv.AdaugaMasina("SV99XHZ", "Audi", "Seria 7", "SUV");
 	srv.AdaugaMasina("BV23LAS", "Mercedes", "C-Class", "SUV");
@@ -40,7 +44,11 @@ void test_adauga()
 
 void test_goleste()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	srv.AdaugaMasina("BN11ABC", "BMW", "X6", "Sport");
 	srv.AdaugaMasina("SV99XHZ", "Audi", "Seria 7", "SUV");
 	srv.AdaugaMasina("BV23LAS", "Mercedes", "C-Class", "SUV");
@@ -57,7 +65,11 @@ void test_goleste()
 
 void test_genereaza()
 {
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	srv.AdaugaDefault();
 
 	WashingList wlist{ srv };
@@ -73,8 +85,11 @@ void test_genereaza()
 
 void test_export()
 {
-
-	ServiceMasina srv;
+	std::ofstream file("masini_test.txt", std::ios::trunc);
+	file.close();
+	RepositoryFile repo("masini_test.txt");
+	Validator validator;
+	ServiceMasina srv{ repo, validator };
 	srv.AdaugaMasina("BN11ABC", "BMW", "X6", "Sport");
 	srv.AdaugaMasina("SV99XHZ", "Audi", "Seria 7", "SUV");
 	srv.AdaugaMasina("BV23LAS", "Mercedes", "C-Class", "SUV");

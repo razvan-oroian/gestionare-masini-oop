@@ -7,7 +7,10 @@
 
 void main2()
 {
-	Console console;
+	RepositoryFile repo("masini.txt");
+	Validator validator;
+	ServiceMasina srv(repo, validator);
+	Console console(srv);
 	console.Run();
 }
 

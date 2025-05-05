@@ -6,9 +6,10 @@
 #include <vector>
 #include "IteratorVector.h"
 #include "Masina.h"
+#include <fstream>
 
 class Repository {
-private:
+protected:
 	//MyVector<Masina> masini;
 	std::vector<Masina> masini;
 
@@ -23,6 +24,19 @@ public:
 	const size_t GetSize() const noexcept;
 	void Delete(const string& nrInmatriculare);
 	void Update(const Masina& masina);
+};
+
+class RepositoryFile : public Repository {
+private:
+	const string filename;
+	void loadFromFile();
+public:
+	RepositoryFile(const string& filename);
+	void Store(const Masina& masina);
+	void Delete(const string& nrInmatriculare);
+	void Update(const Masina& masina);
+	void writeToFile();
+
 };
 
 
